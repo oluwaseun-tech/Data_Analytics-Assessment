@@ -14,7 +14,7 @@
 -- 1. The first CTE (transaction_summary) calculates:
 --    - Total number of inflow transactions per customer
 --    - Total inflow value in naira (converted from kobo)
---    - Average transaction value in naira
+--    - Average transaction value in Naira
 --
 -- 2. The second CTE (user_clv):
 --    - Joins with the users table to get name and date_joined
