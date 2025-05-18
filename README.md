@@ -1,6 +1,6 @@
 #  DataAnalytics-Assessment
 
-Welcome to my submission for the SQL Proficiency Assessment and thank you for the opportunity. This repository showcases my ability to translate complex business questions into clean, efficient, and readable SQL solutions, driven by real-world scenarios across customer behavior, finance, marketing, and operations.
+Welcome to my submission for the SQL Proficiency Assessment, and thank you for the opportunity. This repository showcases my ability to translate complex business questions into clean, efficient, and readable SQL solutions, driven by real-world scenarios across customer behavior, finance, marketing, and operations.
 
 Each `.sql` file in this project contains:
 - A clear and structured solution to a data problem
@@ -11,32 +11,19 @@ Each `.sql` file in this project contains:
 
 ---
 
-## This is the Repository Structure
-
-DataAnalytics-Assessment/
-│
-├── Assessment_Q1.sql # Cross-product analysis
-├── Assessment_Q2.sql # Frequency segmentation
-├── Assessment_Q3.sql # Inactivity alert logic
-├── Assessment_Q4.sql # CLV estimation modeling
-└── README.md
-
-
-
 ##  Here is the Case-by-Case Breakdown
 
 ###  Q1: High-Value Customers with Multiple Products
 
-** Goal:**  
-To identify customers with both a savings and an investment plan, sorted by total inflows.
+**Goal:**  
+To identify customers with savings and an investment plan, sorted by total inflows.
 
-** My Approach:**  
+**My Approach:**  
 - I used `JOIN` on `plans_plan` and `savings_savingsaccount`  
 - Applied `CASE WHEN` to separately count savings vs. investment plans  
 - Used `COALESCE` to show the most complete name per customer
 - Aggregated confirmed deposits (converted from kobo to naira)
 -In all queries that return user names, I implemented a fallback strategy using `COALESCE` to ensure that meaningful, readable names are always shown:
-
 - Primary: `name` column
 - Fallback 1: `first_name + last_name`
 - Fallback 2: `email`
@@ -46,49 +33,48 @@ To identify customers with both a savings and an investment plan, sorted by tota
 This improves result quality and ensures no rows are missing user identifiers even when certain profile fields are incomplete.
 
 
-** Business Insight:**  
+**Business Insight:**  
 This Pinpoints multi-product users with high engagement for cross-selling campaigns.
 
 ---
 
 ###  Q2: Transaction Frequency Analysis
 
-** Goal:**  
+**Goal:** 
 Segment users based on monthly transaction frequency: High, Medium, or Low.
 
-** My Approach:**  
-- I Calculated user activity period using `TIMESTAMPDIFF`  
+**My Approach:**  
+- I calculated the user activity period using `TIMESTAMPDIFF`  
 - Averaged transactions per month using modular CTEs  
 - Categorized frequency behavior using `CASE` logic  
 - Ordered results by behavioral tier for operational clarity
 
-** Business Insight:**  
+**Business Insight:**  
 It helps marketing teams tailor communication based on engagement frequency.
 
 ---
 
 ###  Q3: Account Inactivity Alert
 
-** Goal:**  
+**Goal:**  
 To identify accounts with no inflow activity for over a year.
 
-** My Approach:**  
+**My Approach:**  
 - I calculated the latest inflow using `MAX(transaction_date)`  
 - Filtered out archived or deleted plans  
 - Measured inactivity in days using `DATEDIFF`  
 - Classified plan type using `CASE WHEN` for readability
 
-** Business Insight:**  
-To Supports operations(ops) in surfacing dormant plans for recovery or churn prevention.
+**Business Insight:**  
+To support operations(ops) in surfacing dormant plans for recovery or churn prevention.
 
 ---
 
 ### Q4: Customer Lifetime Value (CLV) Estimation
-** Goal: **
+**Goal:**
 It is to estimate a simplified version of Customer Lifetime Value (CLV) using each user's historical transaction activity and account tenure.
 
-** My Approach: **
-
+**My Approach:**
 -Showed the aggregated total number of inflow transactions and their value per user
 -Converted all transaction values from kobo to naira
 -Measured account tenure in months using TIMESTAMPDIFF between date_joined and the current date
@@ -96,11 +82,10 @@ It is to estimate a simplified version of Customer Lifetime Value (CLV) using ea
 -Estimated CLV using this formula:
 CLV = \left(\frac{\text{total_transactions}}{\text{tenure_months}}\right) \times 12 \times (0.1\% \times \text{avg_transaction_value})
 -Applied ROUND to format monetary output
-- Constructed user-friendly name fallback using COALESCE with first_name, last_name, email, and username
+- Constructed a user-friendly name fallback using COALESCE with first_name, last_name, email, and username
 
-** Business Insight: **
+**Business Insight:**
 This approach helps prioritize users who are both:
-
 -Highly active (high transaction count)
 -Consistently contributing high transaction value
 -It supports marketing decisions like identifying VIP users, targeting retention programs, or offering premium incentives.
@@ -140,5 +125,5 @@ This isn’t just SQL. Each query reflects:
 
 ---
 
-Thank you for reviewing my submission. I'm excited about the opportunity and would be happy to discuss any part of my approach further.
+Thank you for reviewing my submission. I'm excited about the opportunity and would happily discuss any part of my approach further.
 
