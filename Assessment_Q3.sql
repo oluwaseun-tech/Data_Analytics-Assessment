@@ -3,7 +3,7 @@
 -- ------------------------------------------------------------
 -- Objective:
 -- To identify all active savings or investment plans that have not
--- To received any inflow transactions (confirmed_amount > 0) in
+-- To receive any inflow transactions (confirmed_amount > 0) in
 -- the past 365 days.
 --
 -- This supports the operations team's goal to flag dormant accounts
@@ -42,6 +42,7 @@
 -- Output Columns:
 -- plan_id | owner_id | type | last_transaction_date | inactivity_days
 -- ============================================================
+
 WITH last_transactions AS (
     SELECT 
         plan_id,
