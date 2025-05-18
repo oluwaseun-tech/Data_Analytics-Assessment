@@ -26,8 +26,8 @@
 --    - Computes the average monthly transaction rate within each group
 --    - Orders categories logically using CASE
 --
--- The Rationale for using this SQL Techniques:
--- - TIMESTAMPDIFF(MONTH, ...) hepl provides accurate tenure in months,
+-- The Rationale for using these SQL Techniques:
+-- - TIMESTAMPDIFF(MONTH, ...) help provides accurate tenure in months,
 --   which is better than counting raw dates or weeks.
 -- - CTEs (Common Table Expressions) were also used to make each step
 --   modular, readable, and easy to debug or extend.
