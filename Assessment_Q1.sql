@@ -17,9 +17,8 @@
 -- owner_id | name | savings_count | investment_count | total_deposits
 -- ============================================================
 
-SELECT 
-    u.id AS owner_id,
-    -- Use COALESCE to display the most complete available name for each user.
+
+ -- Use COALESCE to display the most complete available name for each user.
 -- Priority order:
 -- 1. u.name — if present and not blank
 -- 2. CONCAT(u.first_name, ' ', u.last_name) — if both names exist
@@ -27,6 +26,8 @@ SELECT
 -- 4. u.username — further fallback if email is also unavailable
 -- 5. 'No Name' — default label for completely anonymous users
 
+SELECT 
+    u.id AS owner_id,
     COALESCE(
         NULLIF(TRIM(u.name), ''),
         NULLIF(CONCAT(TRIM(u.first_name), ' ', TRIM(u.last_name)), ' '),
